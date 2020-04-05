@@ -1,0 +1,17 @@
+{
+  "nodes": [
+    {
+      "role": "zookeeper",
+      "count": 3,
+      "ram": "1gb"
+    },
+    {
+      "role": "kafka_broker",
+      "count": 3,
+      "ram": "2gb"
+    }
+  ],
+  "ssh_key": "~/.ssh/terraform",
+  "start_ip": "168.192.77.10",
+  "base_box": "centos/7"
+}

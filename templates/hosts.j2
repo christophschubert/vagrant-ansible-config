@@ -1,0 +1,16 @@
+# Automatically created on {{ now() }}
+
+all:
+  vars:
+    ansible_connection: ssh
+    ansible_user: vagrant
+    ansible_become: true
+    ansible_ssh_private_key_file: {{ machines['ssh_key']}}
+
+{% for group in machines['nodes'] %}
+{{ group['role'] }}:
+  hosts:
+    {%- for octet in group['end_blocks'] %}
+    {{ machines['cidr_block']}}.{{ octet }}:
+    {%- endfor %}
+{% endfor %}
